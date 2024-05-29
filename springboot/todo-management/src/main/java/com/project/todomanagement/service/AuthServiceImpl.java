@@ -1,5 +1,6 @@
 package com.project.todomanagement.service;
 
+import com.project.todomanagement.dto.JwtAuthResponse;
 import com.project.todomanagement.dto.LoginDto;
 import com.project.todomanagement.dto.RegisterDto;
 import com.project.todomanagement.entity.Role;
@@ -7,6 +8,7 @@ import com.project.todomanagement.entity.User;
 import com.project.todomanagement.exception.TodoApiException;
 import com.project.todomanagement.repository.RoleReository;
 import com.project.todomanagement.repository.UserRepository;
+import com.project.todomanagement.security.JwtTokenProvider;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,6 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -27,7 +30,7 @@ public class AuthServiceImpl implements AuthService{
     private RoleReository roleReository;
     private PasswordEncoder passwordEncoder;
     private AuthenticationManager authenticationManager;
-
+    private JwtTokenProvider jwtTokenProvider;
 
     @Override
     public String register(RegisterDto registerDto) {
@@ -58,7 +61,7 @@ public class AuthServiceImpl implements AuthService{
     }
 
     @Override
-    public String login(LoginDto loginDto) {
+    public JwtAuthResponse login(LoginDto loginDto) {
 
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 loginDto.getUsernameOrEmail(),
@@ -67,6 +70,23 @@ public class AuthServiceImpl implements AuthService{
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        return "User logged in successfully";
+        String token = jwtTokenProvider.generateToken(authentication);
+
+        Optional<User> userOptional  = userRepository.findByUsernameOrEmail(loginDto.getUsernameOrEmail(), loginDto.getUsernameOrEmail());
+        String role = null;
+        if(userOptional.isPresent()){
+            User loggedInUser = userOptional.get();
+           Optional<Role> optionalRole = loggedInUser.getRoles().stream().findFirst();
+
+           if(optionalRole.isPresent()){
+               Role userRole = optionalRole.get();
+               role = userRole.getName();
+           }
+        }
+
+        JwtAuthResponse jwtAuthResponse = new JwtAuthResponse();
+        jwtAuthResponse.setRole(role);
+        jwtAuthResponse.setAccessToken(token);
+        return jwtAuthResponse;
     }
 }
