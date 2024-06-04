@@ -1,7 +1,0 @@
-package com.project.todomanagement.exception;
-
-public class ResourceNotFoundException extends RuntimeException {
-    public ResourceNotFoundException(String s) {
-        super(s);
-    }
-}
