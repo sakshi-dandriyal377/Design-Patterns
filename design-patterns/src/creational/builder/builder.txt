@@ -1,0 +1,23 @@
+#Builder design pattern
+A Builder Design Pattern is a Creational Design Pattern that lets you construct complex objects step by step.
+Or We Can Say:
+A Builder Pattern solves the issue with a large number of optional parameters and
+inconsistent states by providing a way to build the object step-by-step and provide a method that will actually return the final Object.
+
+#When Will We Need Builder Design Pattern?
+Imagine that we want to build software that accepts customers' details and stores them in a database.
+
+Example:
+Consider creating a Customer object with mandatory attributes firstName, lastName and optional attributes middleName and age.
+We create several overloaded constructors that call the default constructor with default values for missing inputs.
+
+Mandatory Fields - First Name, Last Name, Primary Email, and Primary Mobile Number
+Optional Fields - Middle Name, Secondary Email, and Secondary Mobile Number
+Ideally, we create a Customer class with the mandatory and optional attributes.
+We create a constructor that accepts the attributes.
+Since some attributes are optional, we may need to pass null values to those attributes we don't want to use.
+The builder design pattern lets us create an object step by step without passing all the values to the constructor.
+
+#Example of Builder Pattern: —
+Many classes in Java use builder design patterns.
+For example java.lang.StringBuilder and java.lang.StringBuffer has used the builder pattern for object building.
