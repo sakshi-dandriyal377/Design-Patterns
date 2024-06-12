@@ -1,0 +1,43 @@
+#Factory design pattern
+Factory Pattern or Factory Method Pattern says that just define an interface or abstract class for creating an object
+but let the subclasses decide which class to instantiate.
+In other words, subclasses are responsible to create the instance of the class.
+The Factory Method Pattern is also known as Virtual Constructor.
+
+#Example
+let’s take an example suppose you went to an Apple store and you asked them for IPhone14
+they will check the availability of it and will simply hand it over to you.
+Now what’s happening here is you are client and Apple store is factory ,
+you don’t have to worry about how this Apple store is going to get IPhone14 and how it is going to serve you with IPhone14 ,
+this complete process is hidden from you and this is what Factory Design Pattern does .
+
+#usecase
+client(user)         --------------->   Apple store(factory class)    -------------------->      phone(interface)
+{ask for iphone 14                                                                              /      \         \
+and get some response}                                                                         /        \         \
+                                                                                             iphone14   iphone15   iphone16
+                                                                                                 {product classes}
+
+Apple Store is our factory,Phone is our product interface and IPhone14,IPhone14 Pro and IPhone14 Pro Max are our product classes
+Note that we have an Unavailable Phone class as product class this is going to give us the relevant information
+about unavailability of any phone in store.
+
+#Components of Factory Design Pattern
+Factory Class -: The factory class is responsible for creating and returning instances of the concrete products.
+Product Interface/Abstract Class -: This defines the interface or abstract class that represents the products to be created by the factory.
+Concrete Products -: These are the specific classes that implement the product interface or extend the abstract class.
+
+# Examples
+Java Database Connectivity (JDBC): java.sql.DriverManager
+Factory Method: DriverManager.getConnection(String url, String user, String password)
+
+Apache Commons Logging: org.apache.commons.logging.LogFactory
+Log log = LogFactory.getLog(LoggingFactoryExample.class);
+log.info("This is an info message");
+
+Spring Framework: org.springframework.context.ApplicationContext
+ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+MyBean myBean = context.getBean("myBean", MyBean.class);
+
+
+reference : https://medium.com/@ngneha090/factory-design-pattern-in-java-cf22317481f1
