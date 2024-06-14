@@ -1,0 +1,25 @@
+#Prototype design pattern is used when the Object creation is a costly and requires a lot of time and resources
+and you have a similar object already existing.
+Prototype pattern provides a mechanism to copy the original object to a new object and then modify it according to our needs.
+Prototype design pattern uses java cloning to copy the object.
+
+#Real World Example
+Assume that we are having one program for Inserting data into a database from one specific source.
+Now, we have received one new requirement before inserting data into the database,
+we need to perform some type of data preprocessing and data modifications.
+As we are already having a program for inserting data,
+we can use this object and do some changes to it so that it can modify/pre-process the data and then insert it into the database.
+
+To perform this, we will clone the existing object into the new object and make necessary changes to this new object.
+For Prototype Design Pattern, it is mandatory to have a copy feature in existing objects.
+If we want to create prototypes of our object, we need to implement/define a clone() method for that object/class.
+Although, it depends on our design and requirement whether to use a shallow or deep copy of the existing objects.
+
+#Shallow Copy - In shallow copy, we only clone the parent object and not its containing objects.
+In shallow copy, we copy references of the Original object,
+and hence if we make any changes in one of the objects, those changes get reflected in other objects as well.
+
+#Deep Copy - In a deep copy, we clone the parent object as well as its containing objects.
+In a deep copy, we copy the original object with its values so after copying,
+both the objects are independent of each other, and hence, if we make any changes in one object,
+that change does not get reflected in the other object.
