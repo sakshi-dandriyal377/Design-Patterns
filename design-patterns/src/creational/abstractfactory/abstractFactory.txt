@@ -1,0 +1,35 @@
+#Abstract Factory pattern
+Abstract Factory patterns work around a super-factory which creates other factories.
+The Abstract Factory Pattern is a creational design pattern that provides an interface for creating families of related or dependent objects
+without specifying their concrete classes.
+This pattern is useful when a system needs to be independent of how its objects are created, composed, and represented,
+and when a system needs to support multiple families of products.
+
+#Example
+Suppose you want to buy a phone so what you will do you will go to a phone store and will ask for your desired phone to the seller
+now the seller has phones of different companies he will give you your desired phone to you.
+So here you can see that phone store is a factory of phone that contains phones from different factories.
+We can say that phone store is a super factory.
+
+
+                                                            ----> iphone|---> iphone15       --------------
+                                                           |            |---> iphone14                     |
+                                                           |                                               |
+client----->phone store(super factory)--------(sub factories)-----> samsung|----> s21           concrete products
+                                                           |               |-----> s24                      |
+                                                           |                                                |
+                                                           ------> oneplus|----> oneplus 9                  |
+                                                                          |----> oneplus 10     -------------
+
+
+#example
+In the Spring Framework, the Abstract Factory Pattern is used to create and manage beans.
+The BeanFactory and ApplicationContext interfaces are the main components of this pattern.
+They provide a way to define beans in configuration files (such as XML) and retrieve them at runtime,
+ensuring that the client code is decoupled from the actual creation of objects. This approach promotes loose coupling,
+making the application easier to maintain and extend.
+
+
+
+#references
+https://medium.com/@akshatsharma0610/abstract-factory-design-pattern-in-java-45a326c8fc9f
