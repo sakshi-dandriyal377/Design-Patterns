@@ -1,0 +1,23 @@
+#Adapter Design Pattern
+The Adapter Pattern is a structural design pattern that allows objects with incompatible interfaces to work together.
+Adapter design pattern is one of the structural design pattern and it is used so that two unrelated interfaces can work together.
+The object that joins these unrelated interfaces is called an adapter.
+
+Example:-
+One real-world example of the Adapter Design Pattern is a mobile charger.
+Mobile chargers act as adapters between the power socket and the mobile device,
+converting the voltage to a suitable level for charging the device.
+In software development, the Adapter Design Pattern follows the same concept by introducing an additional adapter class
+between an existing interface and a class that needs to work with it.
+
+Key Components of the Adapter Pattern:
+Target: The interface that the client expects.
+Adapter: The class that implements the Target interface and wraps an Adaptee object.
+Adaptee: The existing class that needs to be adapted.
+Client: The class that interacts with the Target interface.
+
+
+
+
+References:-
+https://medium.com/@akshatsharma0610/adapter-design-pattern-in-java-fa20d6df25b8
