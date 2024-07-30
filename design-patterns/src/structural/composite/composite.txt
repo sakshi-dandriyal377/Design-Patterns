@@ -1,0 +1,58 @@
+Composite design pattern:-
+The Composite Pattern lets you organize objects into tree-like structures.
+This way, you can handle individual objects and groups of objects in the same way, making it easier to work with complex hierarchies.
+
+this pattern helps in scenarios where we have object inside object (tree like structure)
+
+Example:-
+
+        (component base interface)
+           box
+        /       \
+       /         \
+    item(leaf)    box (composite) --> group of object(object inside object)
+(single object)  /    \
+                /      \
+              item     box
+             (leaf)    (composite)
+
+
+            file system
+            /       \
+           /         \
+         file       directory
+                    /       \
+                   /         \
+                 file       directory
+
+ * Component – is the base interface for all the objects in the composition. It should be either an interface
+ * or an abstract class with the common methods to manage the child composites.
+ * Leaf – implements the default behavior of the base component. It doesn't contain a reference to the other objects.
+ * Composite – has leaf elements. It implements the base component methods and defines the child-related operations.
+
+Example
+1)File System Hierarchies:
+File systems are a classic example where files and directories can be represented using the Composite Pattern.
+Both files and directories implement a common interface and directories can contain other files and directories.
+
+2)Parse Trees:
+Compilers and interpreters use the Composite Pattern to represent parse trees for programming languages.
+Each node in the tree can be a statement, expression, or a combination of these.
+
+3)Java Collections Framework:
+The Java Collections Framework provides a unified architecture for representing and manipulating collections.
+The java.util.Collection interface and its implementations can be seen as an application of the Composite Pattern.
+Collections like List, Set, and Map can contain other collections, treating them uniformly.
+
+  Example:
+  Collection Interface: java.util.Collection is the root interface for the collection hierarchy.
+  Composite Class: java.util.ArrayList can contain other objects, including other collections.
+
+4)Spring Data JPA Repositories:
+Spring Data JPA uses the Composite Pattern to provide a unified interface for various CRUD operations.
+The CrudRepository interface serves as a component, and specific repositories (e.g., UserRepository) act as leaves and composites.
+
+5)Spring MVC Controllers:
+In Spring MVC, you can compose multiple controller methods within a single controller class,
+allowing you to handle various request mappings uniformly.
+
