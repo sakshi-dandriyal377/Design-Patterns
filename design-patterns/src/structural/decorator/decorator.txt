@@ -1,0 +1,27 @@
+Decorator pattern allows us to add a new functionality to existing objects without changing its structure at all.
+Simply, it allows to do runtime modifications to the objects.
+
+ * To achieve decorator pattern you need following:
+ * Create Interface - Base product
+ * Create abstract class - Base product's base impl
+ * Abstract Decorator - which implements base product - This works as foundation of decorator what other decorator needs to do minimum.
+ * Different decorators - Which takes this product input and decorate it.
+
+ Example:-
+                    pizza ------->  Plain pizza ------>  toppings
+                                                         /   |     \
+                                                        /    |      \
+                                              extra cheese   veggies paneer
+
+
+1)Notification Systems
+In notification systems, decorators can be used to add different channels (e.g., SMS, Email, Push notifications) dynamically.
+2) Data Encryption Systems
+Data encryption systems use decorators to add layers of encryption dynamically.
+
+
+
+ references:-
+ https://medium.com/@thecodebean/decorator-design-pattern-implementation-in-java-af632380e249
+
+

@@ -1,0 +1,41 @@
+This pattern helps to reduce the memory usage by sharing the data among the multiple objects.
+The main principle of pattern is cache common objects states avoiding a lot of same objects/data.
+The Flyweight design pattern falls under the structural design pattern category.
+It focuses on optimizing memory usage by sharing common state between multiple objects.
+Instead of each object holding its own data, the pattern separates the intrinsic (shared) state and the extrinsic (unique) state of an object.
+The intrinsic state is shared among multiple objects, while the extrinsic state can vary.
+
+Key Concepts of Flyweight Pattern
+Intrinsic State: (fixed and shareable)
+This is the state that is shared among multiple objects. It is stored in the Flyweight object.
+Extrinsic State: (set by client and mutable)
+ This is the state that is unique to each object and cannot be shared.
+ It is stored outside the Flyweight object and passed to it when needed.
+
+->Identify shareable state (intrinsic) and non-shareable state (extrinsic)
+->Create a Factory that can return an existing object or a new object
+->The client must use the Factory instead of "new" to request objects
+->The client (or a third party) must provide/compute the extrinsic state
+
+Example:-
+    Fonts
+    fontName  ----> Intrinsic
+    fortSize  ---|
+    text      ---|   Extrinsic
+    color     ---|
+
+
+examples:-
+
+In programming, we can see java.lang.String constants as flyweight objects.
+All strings are stored in string pool and if we need a string with certain content then runtime return the reference to already existing string constant from the pool – if available.
+
+
+In browsers, we can use an image in multiple places in a webpage. Browsers will load the image only one time, and for other times browsers will reuse the image from cache.
+Now image is same but used in multiple places. It’s URL is intrinsic attribute because it’s fixed and shareable.
+Images position coordinates, height and width are extrinsic attributes which vary according to place (context) where they have to be rendered.
+
+
+
+
+
