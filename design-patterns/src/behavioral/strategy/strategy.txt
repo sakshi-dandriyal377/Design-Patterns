@@ -1,0 +1,45 @@
+-> the strategy pattern allows us to change the behavior of an algorithm at runtime.
+-> help us to define the multiple algorithm for the task and we can select any algorithm depending upon the situation.
+
+Key Components
+Strategy Interface → Defines the contract (rules) that all strategies must follow.
+Concrete Strategies → Different implementations of the strategy interface (actual behaviors/algorithms).
+Context → The class that selects and executes a strategy at runtime.
+
+Simplified Analogy
+Interface → "All vehicles must have a drive() method."
+Strategies → Car, Bike, Truck (each implements drive() differently).
+Context → A Driver who can switch between vehicles.
+
+                    HAS A
+(PAYMENTCONTEXT) ---------------> (PAYMENTSTRATEGY(INTERFACE))
+                                    |          |            |
+                                    |(IS A)    |(IS A)      | (IS A)
+                              CREDIT CARD     UPI          CASH
+
+#Comparator Interface – Sorting Objects
+Where? java.util.Collections.sort() or List.sort()
+How it works: You pass different Comparator implementations to sort a list based on different strategies(e.g., by name, age, salary).
+
+When would you use the Strategy Pattern?
+✅ 1. You have multiple algorithms or behaviors for a task
+And you want to switch between them dynamically at runtime.
+Example:
+Different payment methods: CreditCard, PayPal, UPI
+Different sorting algorithms: QuickSort, MergeSort, BubbleSort
+Different compression strategies: ZIP, RAR, GZIP
+
+You want to eliminate complex if-else or switch statements
+Using polymorphism (Strategy Pattern) instead of conditional logic makes the code cleaner, easier to extend, and maintain.
+Before:
+if ("credit".equals(type)) {
+   payWithCredit();
+} else if ("paypal".equals(type)) {
+   payWithPaypal();
+}
+After (using Strategy Pattern):
+paymentStrategy.pay(amount);
+
+You want to adhere to the Open/Closed Principle
+With Strategy Pattern, you can add new strategies without modifying existing code
+— making your application open to extension but closed to modification.
