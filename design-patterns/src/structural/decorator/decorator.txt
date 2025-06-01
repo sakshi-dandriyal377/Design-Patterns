@@ -8,16 +8,70 @@ Simply, it allows to do runtime modifications to the objects.
  * Different decorators - Which takes this product input and decorate it.
 
  Example:-
-                    pizza ------->  Plain pizza ------>  toppings
-                                                         /   |     \
-                                                        /    |      \
-                                              extra cheese   veggies paneer
+                                        (is-a)
+                    (pizza interface) <-------------------  toppings(decorator abstract class)
+                         |               has-a               /     |        \
+                         | is-a                             /      |         \
+                     Plain pizza                   extra cheese   veggies   paneer  ( all have is-a)
 
+note:- toppings(decorator abstract class)
+No, PizzaDecorator should not be an interface — it needs to be an abstract class
+✅ Why PizzaDecorator Should Be an Abstract Class (Not an Interface)
+1. Decorator Needs to Store a Reference
+The decorator must "wrap" a component (Pizza) to delegate calls.
+This requires storing a reference like:
+protected Pizza pizza;
+Interfaces cannot have instance fields, so they can't store a wrapped object.
+2. Constructor Required for Initialization
+Decorators usually take the component in the constructor:
+public PizzaDecorator(Pizza pizza) {
+    this.pizza = pizza;
+}
+Interfaces can't have constructors, so you can’t enforce or standardize how the component is passed and stored.
+
+When to Use the Decorator Pattern?
+✅ When you need to add responsibilities to objects dynamically.
+✅ When subclassing is impractical (too many combinations).
+✅ For extending functionality without modifying existing code (Open/Closed Principle).
 
 1)Notification Systems
 In notification systems, decorators can be used to add different channels (e.g., SMS, Email, Push notifications) dynamically.
 2) Data Encryption Systems
 Data encryption systems use decorators to add layers of encryption dynamically.
+
+#examples:-
+1. Spring Security Filters (SecurityFilterChain)
+Spring Security applies decorators to add security layers dynamically.
+Component: HttpSecurity (base security configuration)
+Decorators:
+CsrfConfigurer
+SessionManagementConfigurer
+OAuth2LoginConfigurer
+FormLoginConfigurer
+HttpBasicConfigurer
+Each configurer wraps and adds its behavior to the SecurityFilterChain.
+
+2. Validation with Hibernate Validator
+Constraint validators decorate input checks.
+Component: Bean fields
+Decorator: @NotNull, @Email, etc. → each handled by a ConstraintValidator
+
+3. Spring Transaction Management: @Transactional
+Purpose: Wrap methods in database transactions.
+How It Works
+Component: Original method (saveUser()).
+Decorator: @Transactional (adds transaction boundaries).
+@Service
+public class UserService {
+
+    @Transactional
+    public void saveUser(User user) {
+        userRepository.save(user);
+        auditRepository.logAction("USER_CREATED");
+    }
+}
+Key Point:
+@Transactional decorates methods with transaction handling.
 
 
 
