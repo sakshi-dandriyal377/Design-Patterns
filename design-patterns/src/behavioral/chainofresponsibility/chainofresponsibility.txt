@@ -1,0 +1,63 @@
+🧠 What is Chain of Responsibility?
+The Chain of Responsibility pattern allows a request to pass through a chain of handlers.
+Each handler decides either to handle the request or pass it to the next handler.
+
+🎯 Real-Life Analogy
+Think of technical support:
+Level 1 support → if it can’t solve → escalates to Level 2 → then Level 3.
+Each level is a handler in the chain.
+
+          ┌──────────────┐
+ Request →│  Handler 1   │───┐
+          └──────────────┘   ↓
+                            ┌──────────────┐
+                            │  Handler 2   │───┐
+                            └──────────────┘   ↓
+                                              ...
+                            ┌──────────────┐
+                            │  Handler N   │
+                            └──────────────┘
+
+| Component           | Description                                                    |
+| ------------------- | -------------------------------------------------------------- |
+| **Handler**         | Declares method to process request & reference to next handler |
+| **ConcreteHandler** | Implements the handling logic, passes to next if needed        |
+| **Client**          | Sends the request to the chain                                 |
+
+When to Use This Pattern?
+✔ Multiple objects can handle a request, but you don’t know which one upfront.
+✔ Decoupling the sender of a request from its receivers.
+✔ Dynamic handling where the chain can be modified at runtime.
+
+Real-World Examples:
+Logging frameworks (different log levels: DEBUG → INFO → ERROR)
+Authentication middleware (check API key → validate JWT → check permissions)
+Exception handling (try one handler, fall back to another)
+
+Exception Handling
+Nested Try-Catch Blocks
+try {
+    processRequest();
+} catch (AuthException e) {
+    log("Auth failed", e);
+} catch (RateLimitException e) {
+    sleep(1000); retry(); // First handler recovers
+} catch (Exception e) {
+    throw e; // Propagate if unhandled
+}
+
+API Gateway / Edge Service
+✅ Use Case: Request filtering & pre-processing before hitting internal services.
+🧩 Chain Example:
+Authentication Handler
+Authorization Handler
+Rate Limiting Handler
+Request Transformation
+Logging & Tracing Handler
+
+Distributed Transaction Saga Choreography
+Use Case: Execute compensating actions/rollback, if a microservice fails in a saga.
+
+Microservice Resilience Pipelines
+Where? Outbound service calls with resilience.
+What? RetryHandler → CircuitBreakerHandler → FallbackHandler
