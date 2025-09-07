@@ -1,8 +1,11 @@
 #Singleton Pattern Principles :-
-Singleton pattern restricts the instantiation of a class and ensures that only one instance of the class exists in the Java Virtual Machine.
+Singleton pattern restricts the instantiation of a class and ensures
+that only one instance of the class exists
+ in the Java Virtual Machine.
 The singleton class must provide a global access point to get the instance of the class.
 Singleton pattern is used for logging, drivers objects, caching, and thread pool.
-Singleton design pattern is used in core Java classes also (for example, java.lang.Runtime, java.awt.Desktop).
+Singleton design pattern is used in core Java classes also
+ (for example, java.lang.Runtime, java.awt.Desktop).
 
 #Singleton Pattern Implementation
 To implement a singleton pattern, we have different approaches, but all of them have the following common concepts.
@@ -15,9 +18,11 @@ In eager initialization, the instance of the singleton class is created at the t
 The drawback to eager initialization is that the method is created even though the client application might not be using it.
 
 #Static block initialization
-Static block initialization implementation is similar to eager initialization, except that instance of the class is created in the static block that provides the option for exception handling.
+Static block initialization implementation is similar to eager initialization,
+ except that instance of the class is created in the static block that provides the option for exception handling.
 
-note:- Both eager initialization and static block initialization create the instance even before it’s being used and that is not the best practice to use.
+note:- Both eager initialization and static block initialization create the instance even
+ before it’s being used and that is not the best practice to use.
 
 #Lazy Initialization and thread safe singleton
 Lazy initialization restricts the creation of the instance until it is requested for first time.
@@ -33,7 +38,8 @@ This error can be solved using double-checked locking.
 This principle tells us to recheck the instance variable again in a synchronized block
 
 #Bill Pugh Singleton Implementation
-“Initialization-on-demand holder idiom” also uses the static block idea, but in a different way. It suggests using a static inner class.
+“Initialization-on-demand holder idiom” also uses the static block idea, but in a different way.
+ It suggests using a static inner class.
 Notice: the private inner static class that contains the instance of the singleton class.
 When the singleton class is loaded, SingletonHelper class is not loaded into memory and only when someone calls the getInstance() method, this class gets loaded and creates the singleton class instance.
 This is the most widely used approach for the singleton class as it doesn’t require synchronization.

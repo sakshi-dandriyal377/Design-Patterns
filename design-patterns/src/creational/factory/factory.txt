@@ -4,6 +4,9 @@ but let the subclasses decide which class to instantiate.
 In other words, subclasses are responsible to create the instance of the class.
 The Factory Method Pattern is also known as Virtual Constructor.
 
+the object  creation logic is hidden from the main class.
+We're hiding new object creation inside the factory logic.
+
 #Example
 let’s take an example suppose you went to an Apple store and you asked them for IPhone14
 they will check the availability of it and will simply hand it over to you.
@@ -39,5 +42,19 @@ Spring Framework: org.springframework.context.ApplicationContext
 ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 MyBean myBean = context.getBean("myBean", MyBean.class);
 
+Spring’s @Bean Methods Are Factory Methods
+@Configuration
+public class AppConfig {
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate(); // Factory method
+    }
+}
+✅ These are custom factories returning configured beans.
+
+
+ExecutorService via Executors.newFixedThreadPool()
+ExecutorService executor = Executors.newFixedThreadPool(5);
+You're getting an object that implements ExecutorService, but the internal class (ThreadPoolExecutor) is hidden.
 
 reference : https://medium.com/@ngneha090/factory-design-pattern-in-java-cf22317481f1

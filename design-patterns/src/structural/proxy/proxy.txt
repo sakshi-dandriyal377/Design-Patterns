@@ -1,10 +1,26 @@
 Proxy pattern : "provides the control for accessing the original object"
+
+The Proxy pattern provides a substitute (proxy) object that controls access to another object (the real subject).
+Think of it like a middleman.
+
+🔹 Real-Life Example
+👉 Think of a credit card:
+The real subject = Bank account (actual money).
+The proxy = Credit card (you don’t carry cash, but still pay).
+Proxy controls access to your account.
+
+When you use @Transactional, @Async, @Cacheable, @Secured, etc. →
+Spring is secretly applying Proxy Design Pattern to your beans.
+
 Proxy pattern is structural pattern.
 We use proxy when we don't want to expose real object and provide proxy object to deal with.
-A proxy controls access to the original object, allowing you to perform something either before or after the request gets through to the original object.
-Many times when you are dealing with remote servers and do lookup from the naming server it provides you proxy object from remote server not actual one.
+A proxy controls access to the original object, allowing you to perform something either before or after
+the request gets through to the original object.
+Many times when you are dealing with remote servers and do lookup from the naming server
+it provides you proxy object from remote server not actual one.
 Even in hibernate if remember we have concept of lazy loading where whenever we load data from db we get proxy object of
-database and return it however if we get it then only it gets loaded from database. This is one of the best example of proxy object.
+database and return it however if we get it then only it gets loaded from database.
+This is one of the best example of proxy object.
 
 Another example can be Spring AOP where AOP objects are proxy and treated on advice aspects.
 

@@ -2,7 +2,7 @@ package creational.abstractfactory;
 
 import java.util.Objects;
 
-public class PhoneStore
+public class PhoneStore //super factory
 {
     private PhoneStore()
     {

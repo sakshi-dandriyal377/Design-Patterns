@@ -2,6 +2,7 @@ package behavioral.observer;
 
 public class ObserverMain {
     public static void main(String[] args) {
+
         YouTubeChannel youTubeChannel = new YouTubeChannel("design pattern");
 
         Subscriber user = new User("Marry");

@@ -2,7 +2,7 @@ package creational.abstractfactory;
 
 import java.util.Objects;
 
-public class OnePlus
+public class OnePlus //factory
 {
     private OnePlus(){
 

@@ -1,12 +1,13 @@
 #Abstract Factory pattern
 Abstract Factory patterns work around a super-factory which creates other factories.
-The Abstract Factory Pattern is a creational design pattern that provides an interface for creating families of related or dependent objects
-without specifying their concrete classes.
+The Abstract Factory Pattern is a creational design pattern that provides an interface
+for creating families of related
+or dependent objects without specifying their concrete classes.
 This pattern is useful when a system needs to be independent of how its objects are created, composed, and represented,
 and when a system needs to support multiple families of products.
 
 #Example
-Suppose you want to buy a phone so what you will do you will go to a phone store and will ask for your desired phone to the seller
+Suppose you want to buy a phone so what you will do , you will go to a phone store and will ask for your desired phone to the seller
 now the seller has phones of different companies he will give you your desired phone to you.
 So here you can see that phone store is a factory of phone that contains phones from different factories.
 We can say that phone store is a super factory.

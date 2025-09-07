@@ -1,8 +1,10 @@
 #Builder design pattern
-A Builder Design Pattern is a Creational Design Pattern that lets you construct complex objects step by step.
+A Builder Design Pattern is a Creational Design Pattern
+that lets you construct complex objects step by step.
 Or We Can Say:
 A Builder Pattern solves the issue with a large number of optional parameters and
-inconsistent states by providing a way to build the object step-by-step and provide a method that will actually return the final Object.
+inconsistent states by providing a way to build the object step-by-step
+and provide a method that will actually return the final Object.
 
 #When Will We Need Builder Design Pattern?
 Imagine that we want to build software that accepts customers' details and stores them in a database.

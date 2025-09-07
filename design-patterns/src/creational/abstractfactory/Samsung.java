@@ -2,7 +2,7 @@ package creational.abstractfactory;
 
 import java.util.Objects;
 
-public class Samsung
+public class Samsung //factory
 {
     private Samsung(){
 

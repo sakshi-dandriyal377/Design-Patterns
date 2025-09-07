@@ -2,7 +2,7 @@ package creational.abstractfactory;
 
 import java.util.Objects;
 
-public class Apple
+public class Apple //factory
 {
     private Apple(){
 
