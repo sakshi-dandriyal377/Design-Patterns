@@ -1,5 +1,6 @@
 -> the strategy pattern allows us to change the behavior of an algorithm at runtime.
--> help us to define the multiple algorithm for the task and we can select any algorithm depending upon the situation.
+-> help us to define the multiple algorithm for the task and
+we can select any algorithm depending upon the situation.
 
 Key Components
 Strategy Interface → Defines the contract (rules) that all strategies must follow.

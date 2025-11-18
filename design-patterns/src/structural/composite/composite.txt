@@ -1,6 +1,7 @@
 Composite design pattern:-
 The Composite Pattern lets you organize objects into tree-like structures.
-This way, you can handle individual objects and groups of objects in the same way, making it easier to work with complex hierarchies.
+This way, you can handle individual objects and groups of objects
+ in the same way, making it easier to work with complex hierarchies.
 
 this pattern helps in scenarios where we have object inside object (tree like structure)
 

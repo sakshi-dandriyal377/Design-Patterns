@@ -1,5 +1,6 @@
 #Adapter Design Pattern
-The Adapter Pattern is a structural design pattern that allows objects with incompatible interfaces to work together.
+The Adapter Pattern is a structural design pattern that allows objects
+with incompatible interfaces to work together.
 Adapter design pattern is one of the structural design pattern and it is used so that two unrelated interfaces can work together.
 The object that joins these unrelated interfaces is called an adapter.
 

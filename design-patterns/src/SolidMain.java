@@ -1,0 +1,63 @@
+package behavioral;
+
+// ===== 1. CORE ABSTRACTIONS =====
+// DIP (Dependency Inversion Principle): High-level modules should not depend on low-level modules. Both should depend on abstractions.
+// ISP (Interface Segregation Principle): Clients shouldn't be forced to depend on interfaces they don't use.
+interface PaymentProcessor {  // <- DIP & ISP: Abstraction that all payment methods will implement
+    void processPayment(double amount);  // Single responsibility payment processing
+}
+
+// ===== 2. PAYMENT METHOD IMPLEMENTATIONS =====
+// SRP (Single Responsibility Principle): Each class has only one reason to change (processing its specific payment type)
+// LSP (Liskov Substitution Principle): All implementations can substitute the PaymentProcessor interface without breaking behavior
+class CreditCardPayment implements PaymentProcessor {  // <- SRP: Handles ONLY credit card logic
+    @Override
+    public void processPayment(double amount) {
+        System.out.println("Processing credit card payment: $" + amount);
+    }
+}
+
+class PayPalPayment implements PaymentProcessor {  // <- SRP: Handles ONLY PayPal logic
+    @Override
+    public void processPayment(double amount) {
+        System.out.println("Processing PayPal payment: $" + amount);
+    }
+}
+
+// ===== 3. EXTENSION WITHOUT MODIFICATION =====
+// OCP (Open/Closed Principle): Open for extension, closed for modification
+class ApplePayPayment implements PaymentProcessor {  // <- OCP: New payment method ADDED without changing existing code
+    @Override
+    public void processPayment(double amount) {
+        System.out.println("Processing Apple Pay payment: $" + amount);
+    }
+}
+
+// ===== 4. DEPENDENCY INJECTION =====
+// DIP (Dependency Inversion Principle): High-level OrderService depends on PaymentProcessor abstraction
+class OrderService {
+    private final PaymentProcessor paymentProcessor;  // <- DIP: Depends on interface, not concrete class
+
+    // Dependency is injected (could be CreditCard, PayPal, ApplePay, or any future payment method)
+    public OrderService(PaymentProcessor paymentProcessor) {  // <- DIP: Constructor injection
+        this.paymentProcessor = paymentProcessor;
+    }
+
+    public void checkout(double amount) {
+        paymentProcessor.processPayment(amount);  // <- Polymorphic call to whichever payment processor was injected
+    }
+}
+
+// ===== 5. USAGE =====
+public class SolidMain {
+    public static void main(String[] args) {
+        // OCP: We can add new payment methods without changing OrderService
+        PaymentProcessor payment = new ApplePayPayment();  // <- Could easily swap to CreditCardPayment()
+
+        // DIP: OrderService accepts ANY PaymentProcessor implementation
+        OrderService orderService = new OrderService(payment);
+
+        orderService.checkout(100.0);  // Output: "Processing Apple Pay payment: $100.0"
+    }
+}
+

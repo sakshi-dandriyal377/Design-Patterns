@@ -1,0 +1,50 @@
+The State Pattern allows an object to change its behavior when its internal state changes.
+It appears as if the object has changed its class.
+
+In simple words:
+Instead of using multiple if-else/switch to check state,
+we create separate classes representing each state.
+
+🧠 Why do we need the State Pattern?
+
+Without State Pattern:
+if(state.equals("STARTED")) { ... }
+else if(state.equals("STOPPED")) { ... }
+else if(state.equals("PAUSED")) { ... }
+
+Too many if-else, code becomes:
+❌ Hard to maintain
+❌ Hard to extend
+❌ Violates Open/Closed Principle
+
+With State Pattern, each state has its own class → clean, maintainable.
+
+🎯 Real-Life Example: A Fan with 3 Speeds
+
+Fan states:
+Off
+Low Speed
+High Speed
+Press button:
+
+👉 Changes behavior depending on state
+👉 "Same button, different action"
+
+Context (Fan)
+   |
+   ---> State Interface (FanState)
+             |
+             +---- ConcreteState (OffState)
+             +---- ConcreteState (LowSpeedState)
+             +---- ConcreteState (HighSpeedState)
+
+
+Thread States in Java
+Thread class in Java has states:
+NEW
+RUNNABLE
+BLOCKED
+WAITING
+TIMED_WAITING
+TERMINATED
+JVM changes behavior of a thread depending on its state, similar to State Pattern.

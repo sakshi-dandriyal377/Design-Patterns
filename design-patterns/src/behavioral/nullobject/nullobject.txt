@@ -1,0 +1,35 @@
+What is the Null Object Pattern?
+The Null Object Pattern is a design pattern where instead of returning null,
+you return a special object that represents “do nothing”.
+
+Instead of checking for null before using an object, you can safely call methods on the “null object,”
+because it implements the same interface but provides empty (non-functional) behavior.
+This avoids:
+NullPointerException
+too many if (obj != null) checks
+scattered null-handling logic everywhere
+
+🧱 Structure
+Classes involved:
+Interface / Abstract class
+→ common methods
+
+Real Implementation
+→ performs actual behavior
+
+Null Implementation
+→ does nothing
+
+Client uses them without null checks
+
+🧠 How This Prevents NullPointerException
+Before (bad):
+Logger logger = null;
+logger.log("Hi"); // NPE 💥
+
+After (good):
+Logger logger = new NullLogger();
+logger.log("Hi"); // no-op, safe 🎉
+
+
+
